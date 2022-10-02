@@ -20,6 +20,10 @@ export const TreeSchema = new Schema({
         type: Number,
         required: true
     },
+    citizen: {
+        type: Schema.Types.ObjectId,
+        ref: 'Citizen'
+    },
     created_date: {
         type: Date,
         default: Date.now

@@ -9,6 +9,9 @@ const routes = (app) => {
     app.route('/trees')
         .get(getTrees)
         .post(addNewTree);
+
+    app.route('/tree')
+        .post(addNewTree);
     
     app.route('/tree/:treeId')
         .get(getTreeById)
