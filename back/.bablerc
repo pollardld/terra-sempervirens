@@ -1,0 +1,6 @@
+{
+    "presets": [
+        "evn",
+        "stage-0"
+    ]
+}
