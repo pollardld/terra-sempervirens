@@ -14,7 +14,15 @@ cd back/
 npm install
 ```
 
-Here you should say what actually happens when you execute the code above.
+```shell
+npm start
+```
+
+open another terminal
+```shell
+cd front
+npm start
+```
 
 ## Developing
 
