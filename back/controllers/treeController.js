@@ -22,3 +22,12 @@ export const getTrees = (req, res) => {
         res.json(tree);
     });
 }
+
+export const getTree = (req, res) => {
+    Tree.findById(req.params.treeId, (err, tree) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(tree);
+    });
+}
