@@ -23,11 +23,20 @@ export const getTrees = (req, res) => {
     });
 }
 
-export const getTree = (req, res) => {
+export const getTreeById = (req, res) => {
     Tree.findById(req.params.treeId, (err, tree) => {
         if (err) {
             res.send(err);
         }
         res.json(tree);
+    });
+}
+
+export const deleteTree = (req, res) => {
+    Tree.remove({ _id: req.params.treeId}, (err, tree) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json({ message: 'Successfully deleted tree' });
     });
 }

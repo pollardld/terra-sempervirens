@@ -1,4 +1,9 @@
-import { addNewTree, getTrees, getTree } from '../controllers/treeController.js';
+import { 
+    addNewTree, 
+    getTrees, 
+    getTreeById, 
+    deleteTree 
+} from '../controllers/treeController.js';
 
 const routes = (app) => {
     app.route('/trees')
@@ -6,7 +11,8 @@ const routes = (app) => {
         .post(addNewTree);
     
     app.route('/tree/:treeId')
-        .get(getTree);
+        .get(getTreeById)
+        .delete(deleteTree);
 }
 
 export default routes;
