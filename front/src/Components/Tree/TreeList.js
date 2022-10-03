@@ -3,11 +3,13 @@ import React from 'react';
 const TreeList = (props) => {
     return (
       <div>
-        <ul>
+        <h1>TreeList</h1>
+        <ul class="pure-g">
             {props.treeList.map((tree) => (
-                <li><span keys={tree._id}>{tree._id}</span></li>
+                <li class="pure-u-1-1"><span keys={tree._id}>{tree.species} | {tree.height} | {tree.yearPlanted} | {tree.circumference}</span></li>
             ))}
         </ul>
+        <a class="pure-button">Add Tree</a>
       </div>
     );
   }
