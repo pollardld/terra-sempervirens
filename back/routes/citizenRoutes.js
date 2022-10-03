@@ -1,9 +1,14 @@
-import { addNewCitizen } from '../controllers/citizenController.js';
+import { 
+    addNewCitizen, 
+    getCitizen 
+} from '../controllers/citizenController.js';
 
-const routes = (app) => {
+const citizenRoutes = (app) => {
     app.route('/citizen')
-        .get(getCitizen)
         .post(addNewCitizen);
+
+    app.route('/citizen/:citizenId')
+        .get(getCitizen);
 }
 
-export default routes;
+export default citizenRoutes;

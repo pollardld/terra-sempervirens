@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from './routes/treeRoutes.js';
+import citizenRoutes from './routes/citizenRoutes.js';
 
 const app = express();
 const PORT = 3300;
@@ -23,6 +24,7 @@ app.use(cors());
 
 // URL routes
 routes(app);
+citizenRoutes(app);
 
 app.get('/', (req, res) => {
     res.send(`Hello World! ${PORT}`);
