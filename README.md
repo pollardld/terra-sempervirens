@@ -38,7 +38,6 @@ npm build
 TBD
 
 ```shell
-npm deploy terra-sempervirens -s server.com -u username -p password
 ```
 
 
