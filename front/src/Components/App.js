@@ -10,33 +10,48 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      citizen: '',
+      currentCitizen: {},
       treeList: [],
     }
 
-    this.currentCitizen = this.currentCitizen.bind(this);
+    this.updateCurrentCitizen = this.updateCurrentCitizen.bind(this);
   }
 
   componentDidMount() {
-    const url = 'http://localhost:3300/trees';
-    axios.get(url)
-      .then((response) => {
-        const data = response.data;
-        this.setState({ 
-          citizen: '', 
-          treeList: data 
+    // const url = `http://localhost:3300/citizen/${this.state.currentCitizen._id}`;
+    console.log(this);
+    // axios.get(url)
+    //   .then((response) => {
+    //     const data = response.data;
+    //     this.setState({ 
+    //       currentCitizen: data, 
+    //     });
+    //     console.log('Data has been received');
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+      axios.get('http://localhost:3300/trees')
+        .then((response) => {
+          this.setState({ 
+            treeList: response.data, 
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        console.log('Data has been received');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
-  currentCitizen(citizen) {
+  updateCurrentCitizen(citizen) {
     this.setState({ 
-      citizen: citizen,
-      treeList: TreeList,
+      currentCitizen: citizen,
+    });
+  }
+
+  updateTreeList(tree) {
+    this.setState({
+      treeList: [tree],
     });
   }
 
@@ -44,20 +59,24 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <nav> </nav>
         </header>
         <main>
-          <CitizenMain />
-          <CitizenForm />
-          <TreeList treeList={this.state.treeList} />
-          <TreeForm />
+          <div class="pure-g">
+            <section class="pure-u-1-1">
+              <h1>App</h1>
+              <CitizenMain citizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} />
+            </section>
+            <section class="pure-u-1-1">
+              <CitizenForm citizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} />
+            </section>
+            <section class="pure-u-1-1">
+              <TreeList treeList={this.state.treeList} updateTreeList={this.state.treeList} />
+            </section>
+            <section class="pure-u-1-1">
+              <TreeForm citizen={this.state.currentCitizen} />
+            </section>
+          </div>
         </main>
       </div>
     );

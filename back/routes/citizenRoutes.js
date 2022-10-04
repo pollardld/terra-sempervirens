@@ -1,10 +1,12 @@
 import { 
     addNewCitizen, 
-    getCitizen 
+    getCitizen,
+    getCitizens
 } from '../controllers/citizenController.js';
 
 const citizenRoutes = (app) => {
     app.route('/citizen')
+        .get(getCitizens)
         .post(addNewCitizen);
 
     app.route('/citizen/:citizenId')

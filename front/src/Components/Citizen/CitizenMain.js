@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CitizenMain = () => {
+const CitizenMain = (props) => {
   return (
     <div>
-      <h1>CitizenMain</h1>
+      <h1>- {props.currentCitizen} - user</h1>
     </div>
   );
 }

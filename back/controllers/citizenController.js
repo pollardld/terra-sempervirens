@@ -11,11 +11,21 @@ export const addNewCitizen = (req, res) => {
             res.send(err);
         }
         res.json(citizen);
-    });
+    })
+    
 }
 
 export const getCitizen = (req, res) => {
     Citizen.findById(req.params.citizenId, (err, citizen) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(citizen);
+    });
+}
+
+export const getCitizens = (req, res) => {
+    Citizen.find((err, citizen) => {
         if (err) {
             res.send(err);
         }

@@ -6,10 +6,12 @@ const TreeList = (props) => {
         <h1>TreeList</h1>
         <ul class="pure-g">
             {props.treeList.map((tree) => (
-                <li class="pure-u-1-1"><span keys={tree._id}>{tree.species} | {tree.height} | {tree.yearPlanted} | {tree.circumference}</span></li>
+                <li class="pure-u-1-1">
+                    <span key={tree._id}>{tree.species} | {tree.height} | {tree.yearPlanted} | {tree.circumference}</ span>
+                </li>
             ))}
         </ul>
-        <a class="pure-button">Add Tree</a>
+        <a href="/tree" class="pure-button">Add Tree</a>
       </div>
     );
   }
