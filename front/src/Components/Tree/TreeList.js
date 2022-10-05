@@ -7,7 +7,7 @@ const TreeList = (props) => {
         <ul class="pure-g">
             {props.treeList.map((tree) => (
                 <li class="pure-u-1-1">
-                    <span key={tree._id}>{tree.species} | {tree.height} | {tree.yearPlanted} | {tree.circumference}</ span>
+                    <a href="#!" className="tree-link" key={tree._id} onClick={props.getSingleTree.bind(this, tree)}>{tree.species} | {tree.height} | {tree.yearPlanted} | {tree.circumference}</a>
                 </li>
             ))}
         </ul>

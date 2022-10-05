@@ -2,6 +2,11 @@ import React from 'react';
 import axios from 'axios';
 
 class CitizenForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.submitCitizenForm = this.submitCitizenForm.bind(this);
+    }
+
     submitCitizenForm(event) {
         event.preventDefault();
 
@@ -10,8 +15,8 @@ class CitizenForm extends React.Component {
             address: event.target.address.value,
         })
         .then((response) => {
-            console.log(response);
             this.props.updateCurrentCitizen(response.data);
+            console.log(this);
         })
         .catch((error) => {
             console.log(error);
@@ -30,7 +35,7 @@ class CitizenForm extends React.Component {
                     <form id="citizen-form" onSubmit={this.submitCitizenForm.bind(this)}>
                         <input placeholder="Name" id="name" name="name" ref="name" type="text" />
                         <input placeholder="Address" id="address" name="address" ref="address" type="text" />    
-                        <button className="btn waves-effect waves-light" type="submit" nme="action">Save</button>
+                        <button className="btn waves-effect waves-light" type="submit" nme="action">Sign Up</button>
                     </form>
                 </div>
             </div>

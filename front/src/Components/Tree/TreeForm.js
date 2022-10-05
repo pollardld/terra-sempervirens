@@ -34,7 +34,7 @@ class TreeForm extends React.Component {
                         <input placeholder="Height (cm)" id="height" name="height" ref="height" type="number" />
                         <input placeholder="Circumference (cm)" id="circumference" name="circumference" ref="circumference" type="number" />
                         <input placeholder="Year Planted" id="yearPlanted" name="yearPlanted" ref="yearPlanted" type="number" />
-                        <input type="hidden" name="citizen" value="633b1cd6d2158da6a983a40b" />
+                        <input type="hidden" name="citizen" id="citizen-id" value="{citizen}" />
                         <button className="outline" type="submit" id="tree-form-submit-btn" nme="action">Save</button>
                     </form>
                 </div>

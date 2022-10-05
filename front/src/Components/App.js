@@ -12,14 +12,15 @@ class App extends React.Component {
     this.state = {
       currentCitizen: {},
       treeList: [],
+      currentTree: {},
+      hasCitizenId: false,
     }
 
     this.updateCurrentCitizen = this.updateCurrentCitizen.bind(this);
   }
 
   componentDidMount() {
-    // const url = `http://localhost:3300/citizen/${this.state.currentCitizen._id}`;
-    console.log(this);
+    
     // axios.get(url)
     //   .then((response) => {
     //     const data = response.data;
@@ -35,7 +36,7 @@ class App extends React.Component {
       axios.get('http://localhost:3300/trees')
         .then((response) => {
           this.setState({ 
-            treeList: response.data, 
+            treeList: response.data,
           });
         })
         .catch((error) => {
@@ -46,12 +47,19 @@ class App extends React.Component {
   updateCurrentCitizen(citizen) {
     this.setState({ 
       currentCitizen: citizen,
+      hasCitizenId: true,
     });
   }
 
   updateTreeList(tree) {
     this.setState({
       treeList: [tree],
+    });
+  }
+
+  getSingleTree(tree) {
+    this.setState({
+      currentTree: tree,
     });
   }
 
@@ -64,14 +72,14 @@ class App extends React.Component {
         <main>
           <div class="pure-g">
             <section class="pure-u-1-1">
-              <h1>App</h1>
-              <CitizenMain citizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} />
+              <h1>Terra Sempervirens</h1>
+              <CitizenMain updateCurrentCitizenMain={this.state.currentCitizen} hasCitizenId={this.state.hasCitizenId} />
             </section>
             <section class="pure-u-1-1">
-              <CitizenForm citizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} />
+              <CitizenForm currentCitizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} />
             </section>
             <section class="pure-u-1-1">
-              <TreeList treeList={this.state.treeList} updateTreeList={this.state.treeList} />
+              <TreeList treeList={this.state.treeList} getSingleTree={this.getSingleTree} updateTreeList={this.updateTreeList} />
             </section>
             <section class="pure-u-1-1">
               <TreeForm citizen={this.state.currentCitizen} />
