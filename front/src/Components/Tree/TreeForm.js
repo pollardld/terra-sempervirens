@@ -2,15 +2,22 @@ import React from 'react';
 import axios from 'axios';
 
 class TreeForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.addTree = this.addTree.bind(this);
+    }
+
     addTree(event) {
         event.preventDefault();
+
+        const citizenId = this.props.citizen._id;
 
         axios.post('http://localhost:3300/tree', {
             species: event.target.species.value,
             height: event.target.height.value,
             yearPlanted: event.target.yearPlanted.value,
             circumference: event.target.circumference.value,
-            citizen: event.target.citizen.value,
+            citizen: citizenId,
         })
         .then((response) => {
             console.log(response);
@@ -34,7 +41,7 @@ class TreeForm extends React.Component {
                         <input placeholder="Height (cm)" id="height" name="height" ref="height" type="number" />
                         <input placeholder="Circumference (cm)" id="circumference" name="circumference" ref="circumference" type="number" />
                         <input placeholder="Year Planted" id="yearPlanted" name="yearPlanted" ref="yearPlanted" type="number" />
-                        <input type="hidden" name="citizen" id="citizen-id" value="{citizen}" />
+                        <input type="hidden" name="citizen" id="citizen-id" value={this.citizen} />
                         <button className="outline" type="submit" id="tree-form-submit-btn" nme="action">Save</button>
                     </form>
                 </div>
