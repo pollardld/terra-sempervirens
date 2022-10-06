@@ -32,7 +32,6 @@ class TreeForm extends React.Component {
             <div>
                 <div className="">
                     <h2 className="">Add Tree</h2>
-                    <p>Add a tree</p>
                 </div>
                 
                 <div className="row center">

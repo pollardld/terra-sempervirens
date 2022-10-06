@@ -6,13 +6,13 @@ const CitizenMain = (props) => {
     if (hasCitizenId) {
         return (
             <div>
-                <h1>Welcome - {props.updateCurrentCitizenMain.name}</h1>
+                <h1>Trees for {props.updateCurrentCitizenMain.name}</h1>
             </div>
         );
     } else {
         return (
             <div>
-                <h1>Welcome - Please Sign Up</h1>
+                <h1>Welcome</h1>
             </div>
         );
     }

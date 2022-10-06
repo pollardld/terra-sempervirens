@@ -62,8 +62,17 @@ class App extends React.Component {
       currentTree: tree,
     });
   }
-
+  
   render () {
+    const hasCitizenId = this.state.hasCitizenId;
+    let formToShow;
+
+    if (!hasCitizenId) {
+      formToShow = <CitizenForm currentCitizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} hasCitizenId={this.state.hasCitizenId} />;
+    } else {
+      formToShow = <TreeForm citizen={this.state.currentCitizen} hasCitizenId={this.state.hasCitizenId} />
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -76,13 +85,10 @@ class App extends React.Component {
               <CitizenMain updateCurrentCitizenMain={this.state.currentCitizen} hasCitizenId={this.state.hasCitizenId} />
             </section>
             <section class="pure-u-1-1">
-              <CitizenForm currentCitizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} />
+              {formToShow}
             </section>
             <section class="pure-u-1-1">
               <TreeList treeList={this.state.treeList} getSingleTree={this.getSingleTree} updateTreeList={this.updateTreeList} />
-            </section>
-            <section class="pure-u-1-1">
-              <TreeForm citizen={this.state.currentCitizen} />
             </section>
           </div>
         </main>
