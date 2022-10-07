@@ -14,6 +14,15 @@ export const addNewTree = (req, res) => {
     });
 }
 
+export const getCitizenTrees = (req, res) => {
+    Tree.find({citizen: req.params.citizenId}, (err, tree) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(tree);
+    });
+}
+
 export const getTrees = (req, res) => {
     Tree.find((err, tree) => {
         if (err) {

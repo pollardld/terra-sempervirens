@@ -5,7 +5,22 @@ class TreeForm extends React.Component {
     constructor(props) {
         super(props);
         this.addTree = this.addTree.bind(this);
+        // this.updateTreeList = this.updateTreeList.bind(this);
     }
+
+    updateTreeList(citizenId) {
+        axios.get(`http://localhost:3300/trees/${citizenId}`)
+           .then((response) => {
+             this.setState({ 
+               treeList: response.data,
+             });
+             
+             console.log(response.data);
+           })
+           .catch((error) => {
+             console.log(error);
+           });
+       }
 
     addTree(event) {
         event.preventDefault();
@@ -24,7 +39,9 @@ class TreeForm extends React.Component {
         })
         .catch((error) => {
             console.log(error);
-        });
+        });    
+
+        this.updateTreeList(citizenId);
     }
 
     render() { 

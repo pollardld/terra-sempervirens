@@ -11,8 +11,8 @@ export const CitizenSchema = new Schema({
         type: String,
         required: true
     },
-    trees: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Tree'
-    }]
+    // trees: [{
+    //     type: Schema.Types.ObjectId.
+    //     ref: 'Tree'
+    // }],
 });

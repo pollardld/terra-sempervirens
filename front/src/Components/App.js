@@ -17,6 +17,7 @@ class App extends React.Component {
     }
 
     this.updateCurrentCitizen = this.updateCurrentCitizen.bind(this);
+    this.updateTreeList = this.updateTreeList.bind(this);
   }
 
   componentDidMount() {
@@ -32,16 +33,6 @@ class App extends React.Component {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-
-      axios.get('http://localhost:3300/trees')
-        .then((response) => {
-          this.setState({ 
-            treeList: response.data,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
   };
 
   updateCurrentCitizen(citizen) {
@@ -51,44 +42,59 @@ class App extends React.Component {
     });
   }
 
-  updateTreeList(tree) {
-    this.setState({
-      treeList: [tree],
-    });
-  }
-
   getSingleTree(tree) {
     this.setState({
       currentTree: tree,
     });
   }
+
+  updateTreeList(citizenId) {
+   axios.get(`http://localhost:3300/trees/${citizenId}`)
+      .then((response) => {
+        this.setState({ 
+          treeList: response.data,
+        });
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   
-  render () {
-    const hasCitizenId = this.state.hasCitizenId;
-    let formToShow;
+
+  shownComponents(hasCitizenId) {
+    let shownComponents = [];
 
     if (!hasCitizenId) {
-      formToShow = <CitizenForm currentCitizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} hasCitizenId={this.state.hasCitizenId} />;
+      shownComponents = [
+        <CitizenForm currentCitizen={this.state.currentCitizen} updateCurrentCitizen={this.updateCurrentCitizen} hasCitizenId={this.state.hasCitizenId} />
+      ];
     } else {
-      formToShow = <TreeForm citizen={this.state.currentCitizen} hasCitizenId={this.state.hasCitizenId} />
+      shownComponents = [
+        <TreeForm citizen={this.state.currentCitizen} hasCitizenId={this.state.hasCitizenId} />,
+        <TreeList treeList={this.state.treeList} getSingleTree={this.getSingleTree} updateTreeList={this.updateTreeList} />
+      ];
     }
 
+    return shownComponents;
+  }
+
+  render () {
+    const hasCitizenId = this.state.hasCitizenId;
+    
     return (
       <div className="App">
         <header className="App-header">
-          <nav> </nav>
+          <h1>Terra Sempervirens</h1>
+          <nav></nav>
         </header>
         <main>
           <div class="pure-g">
             <section class="pure-u-1-1">
-              <h1>Terra Sempervirens</h1>
               <CitizenMain updateCurrentCitizenMain={this.state.currentCitizen} hasCitizenId={this.state.hasCitizenId} />
             </section>
             <section class="pure-u-1-1">
-              {formToShow}
-            </section>
-            <section class="pure-u-1-1">
-              <TreeList treeList={this.state.treeList} getSingleTree={this.getSingleTree} updateTreeList={this.updateTreeList} />
+              {this.shownComponents(hasCitizenId)}
             </section>
           </div>
         </main>

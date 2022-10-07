@@ -2,13 +2,17 @@ import {
     addNewTree, 
     getTrees, 
     getTreeById, 
-    deleteTree 
+    deleteTree,
+    getCitizenTrees
 } from '../controllers/treeController.js';
 
 const routes = (app) => {
     app.route('/trees')
         .get(getTrees)
         .post(addNewTree);
+
+    app.route('/trees/:citizenId')
+        .get(getCitizenTrees);
 
     app.route('/tree')
         .post(addNewTree);
