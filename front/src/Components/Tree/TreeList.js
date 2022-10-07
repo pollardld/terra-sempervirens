@@ -11,7 +11,7 @@ const TreeList = (props) => {
                 </li>
             ))}
         </ul>
-        <a href="/tree" class="pure-button">Add Tree</a>
+        {/* <a href="/tree" class="pure-button">Add Tree</a> */}
       </div>
     );
   }

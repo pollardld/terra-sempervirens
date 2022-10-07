@@ -7,6 +7,9 @@ const CitizenMain = (props) => {
         return (
             <div>
                 <h1>Trees for {props.updateCurrentCitizenMain.name}</h1>
+                <div>
+                    {/* <button disabled="disabled" onClick="this.showCitizenForm">Edit Name or Address</button> */}
+                </div>
             </div>
         );
     } else {

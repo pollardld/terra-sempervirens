@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,60 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+body {
+  background: linear-gradient(180deg, rgba(35,82,220,1) 0%, rgba(35,82,220,1) 20%, rgba(0,0,0,1) 100%);
+  background-repeat: no-repeat;
+  color: #fff;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+
+header.App-header {
+  background: transparent;
+}
+
+h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+}
+
+h2 {
+  color: #62f58a;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  font-size: 1em;
+}
+
+[type="submit"], button {
+  background: #62f58a;
+  color: #000;
+  font-size: 1.25em;
+  font-weight: 600;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+}
+
+button[disabled="disabled"] {
+  background: #ccc;
+  color: #000;
+}
+
+p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.5em;
+  line-height: 1.4;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

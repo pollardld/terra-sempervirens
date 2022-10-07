@@ -48,7 +48,7 @@ class TreeForm extends React.Component {
         return ( 
             <div>
                 <div className="">
-                    <h2 className="">Add Tree</h2>
+                    <h2 className="">Add New Tree</h2>
                 </div>
                 
                 <div className="row center">
@@ -58,7 +58,7 @@ class TreeForm extends React.Component {
                         <input placeholder="Circumference (cm)" id="circumference" name="circumference" ref="circumference" type="number" />
                         <input placeholder="Year Planted" id="yearPlanted" name="yearPlanted" ref="yearPlanted" type="number" />
                         <input type="hidden" name="citizen" id="citizen-id" value={this.citizen} />
-                        <button className="outline" type="submit" id="tree-form-submit-btn" nme="action">Save</button>
+                        <button type="submit" id="tree-form-submit-btn" nme="action">Save Tree</button>
                     </form>
                 </div>
             </div>
