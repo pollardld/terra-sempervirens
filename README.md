@@ -11,19 +11,23 @@ git clone https://github.com/pollardld/terra-sempervirens.git
 cd terra-sempervirens/
 cd back/
 npm install
-```
-
-```shell
 npm start
 ```
 
 open another terminal in the same directory
 ```shell
 cd ../front
+npm install
 npm start
 ```
 
+Open a new browser tab and go to http://localhost:3000
+
+
 ## Developing
+Postman can be used to test API
+
+**TODO: Add API Documentation**
 
 ### Built With
 TODO
