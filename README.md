@@ -17,9 +17,9 @@ npm install
 npm start
 ```
 
-open another terminal
+open another terminal in the same directory
 ```shell
-cd front
+cd ../front
 npm start
 ```
 
