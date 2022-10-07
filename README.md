@@ -6,17 +6,27 @@ MongoDB
 
 ## Installing / Getting started
 
+**Start by opening a new terminal**
+
+**Clone Repo**
 ```shell
 git clone https://github.com/pollardld/terra-sempervirens.git
+```
+
+```shell
 cd terra-sempervirens/
+```
+
+**Backend Install**
+```shell
 cd back/
 npm install
 npm start
 ```
 
-open another terminal in the same directory
+**Open another terminal in the `terra-semervirens` directory**
 ```shell
-cd ../front
+cd front/
 npm install
 npm start
 ```
